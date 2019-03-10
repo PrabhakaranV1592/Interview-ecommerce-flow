@@ -21,4 +21,8 @@ export class HomeComponent implements OnInit {
   searchDatafn(){
     this.gs.getData(this.searchData).subscribe(res => this.gitData = res, err => console.log(err));
   }
+
+  openGit(data){
+    window.open(data.html_url, "_blank");
+  }
 }
