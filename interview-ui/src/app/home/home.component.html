@@ -1,0 +1,38 @@
+<div class="home-page-con">
+  <div class="div-header">
+    <div class="div-head-text">Git Repo Search Filter</div>
+    <div class="div-input-btn">
+      <input type="text" name="searchData" class="form-control" placeholder="Search..." id="usr" [(ngModel)]="searchData">
+      <button class="search-btn" type="button" class="btn btn-primary" (click)="searchDatafn()">Search</button>
+    </div>
+  </div>
+  <div class="div-body">
+    <div class="div-head-text"> Repo search Result</div>
+    <div class="div-row">
+     <div class="row" *ngIf="gitData">
+        <div class="div-col col-12 col-sm-6   col-md-6  col-lg-5 offset-lg-1 col-xl-4" *ngFor="let data of gitData.items">
+        <div class="card">
+            <div class="card-body card-content">
+              <img [src]="data.owner.avatar_url?data.owner.avatar_url : '../../assets/imgs/fb.png'" />
+              <h5>{{data.name}}</h5>
+              <div class="div-btn">
+                  <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-star"></i>&nbsp; {{data.stargazers_count}}</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-code-fork"></i>&nbsp; Fork {{data.forks}}</button>
+                  <button type="button" class="btn btn-outline-secondary btn-sm"><i class="fa fa-info-circle">&nbsp; Open Issues {{data.open_issues_count}}</i></button>
+              </div>
+              <div class="p-div">
+                <p>{{data.description}} </p>
+              </div>
+              
+            </div>
+            <div>
+                <button type="button" class="btn btn-primary btn-lg view-profile-btn">VIEW PROFILE</button>
+            </div>
+     </div>
+     </div>
+    </div>
+    <div class="row" *ngIf="!gitData">
+      <div>No Data</div>
+    </div>
+  </div>
+</div>
